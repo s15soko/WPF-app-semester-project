@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_3SemesterApp"
+        xmlns:vw="clr-namespace:WpfApp_3SemesterApp.Views"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="550" 
         Width="800" 
         ResizeMode="CanMinimize" 
         Background="White">
-    <Grid>
-        
-    </Grid>
+
+    <vw:DashboardView></vw:DashboardView>
 </Window>
