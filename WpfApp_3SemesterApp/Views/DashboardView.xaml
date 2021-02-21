@@ -48,7 +48,7 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid Grid.Row="0" Grid.Column="1" Margin="10">
             <Frame x:Name="DashboardFrame" NavigationUIVisibility="Hidden"></Frame>
         </Grid>
         
