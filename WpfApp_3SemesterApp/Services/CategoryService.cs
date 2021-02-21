@@ -56,5 +56,16 @@ namespace WpfApp_3SemesterApp.Services
 
             return true;
         }
+
+        /// <summary>
+        /// Check if entity with this name exists.
+        /// </summary>
+        /// <param name="name">Entity name.</param>
+        /// <returns>Whether entity exists.</returns>
+        public bool NameExists(string name)
+        {
+            var db = new ShopDbContext();
+            return db.Categories.Where(e => e.Name == name).FirstOrDefault() != null;
+        }
     }
 }

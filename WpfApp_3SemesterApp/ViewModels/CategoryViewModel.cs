@@ -91,6 +91,11 @@ namespace WpfApp_3SemesterApp.ViewModels
                     throw new Exception("Nazwa nie może być pusta");
                 }
 
+                if (CategoryService.NameExists(Name))
+                {
+                    throw new Exception("Ta nazwa jest już zajęta");
+                }
+
                 var newEntity = new Category();
                 newEntity.Name = Name;
                 newEntity.CreatedAt = DateTime.Now;
