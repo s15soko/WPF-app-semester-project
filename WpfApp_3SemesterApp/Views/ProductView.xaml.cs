@@ -30,5 +30,10 @@ namespace WpfApp_3SemesterApp.Views
 
             DataContext = new ProductViewModel();
         }
+
+        private void addNewProductBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CreateProductView());
+        }
     }
 }
