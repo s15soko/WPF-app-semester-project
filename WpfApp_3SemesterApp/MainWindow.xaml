@@ -26,20 +26,37 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.Row="0" Background="#FF3C3C3C" 
+        <Grid Grid.Column="0" Grid.Row="0" Background="#FFFB9F31" 
               MouseDown="Window_MouseDown">
-            
+
             <Button x:Name="CloseWindowBtn" 
                 Content="Zamknij" 
                 Background="Transparent"
                 BorderBrush="Transparent"
                 HorizontalAlignment="Right"
                 Margin="0, 0, 10, 0"
-                Foreground="White" Click="Button_Click"/>
+                Foreground="White" Click="Button_Click" VerticalAlignment="Center">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsFocused" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
 
         <Grid Grid.Column="0" Grid.Row="1">
-            <Frame x:Name="Main" NavigationUIVisibility="Hidden"></Frame>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="27*"/>
+                <ColumnDefinition Width="23*"/>
+            </Grid.ColumnDefinitions>
+            <Frame x:Name="Main" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"></Frame>
         </Grid>
 
     </Grid>
