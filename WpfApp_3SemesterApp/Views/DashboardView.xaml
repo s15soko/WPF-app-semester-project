@@ -28,21 +28,29 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" Margin="5">
-                    <Button x:Name="dashboard_ProductsBtn" Click="dashboard_ProductsBtn_Click">
+                    <Button x:Name="dashboard_ProductsBtn" 
+                            Click="dashboard_ProductsBtn_Click"
+                            BorderBrush="#FFE48A1F"
+                            Background="#FFFB9F31">
                         <TextBlock 
                             Text="Produkty"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            FontSize="20"/>
+                            FontSize="20" 
+                            Foreground="White"/>
                     </Button>
                 </Grid>
                 <Grid Grid.Row="1" Margin="5">
-                    <Button x:Name="dashboard_CategoriesBtn" Click="dashboard_CategoriesBtn_Click">
+                    <Button x:Name="dashboard_CategoriesBtn"
+                            Click="dashboard_CategoriesBtn_Click"
+                            BorderBrush="#FFE48A1F"
+                            Background="#FFFB9F31">
                         <TextBlock 
                             Text="Kategorie"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            FontSize="20"/>
+                            FontSize="20"
+                            Foreground="White"/>
                     </Button>
                 </Grid>
             </Grid>
