@@ -134,6 +134,11 @@ namespace WpfApp_3SemesterApp.ViewModels
                     throw new Exception("Nazwa nie może być pusta");
                 }
 
+                if(SelectedCategory == null)
+                {
+                    throw new Exception("Kategoria nie może być pusta");
+                }
+
                 var newEntity = new Product();
                 newEntity.Name = Name;
                 newEntity.Description = Description;
