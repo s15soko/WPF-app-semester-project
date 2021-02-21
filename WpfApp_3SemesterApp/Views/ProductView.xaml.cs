@@ -27,6 +27,8 @@ namespace WpfApp_3SemesterApp.Views
         public ProductView()
         {
             InitializeComponent();
+
+            DataContext = new ProductViewModel();
         }
     }
 }
