@@ -11,8 +11,7 @@ namespace WpfApp_3SemesterApp.Services
         public List<Category> GetAll()
         {
             var db = new ShopDbContext();
-            List<Category> list = (List<Category>)(from cat in db.Categories select cat);
-
+            List<Category> list = db.Set<Category>().ToList();
             return list;
         }
 
@@ -20,7 +19,7 @@ namespace WpfApp_3SemesterApp.Services
         {
             var db = new ShopDbContext();
             var newEntity = db.Categories.Add(entity);
-            db.SaveChangesAsync();
+            db.SaveChanges();
             return newEntity;
         }
 
