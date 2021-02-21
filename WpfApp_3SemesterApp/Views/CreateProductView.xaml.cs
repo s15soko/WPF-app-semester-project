@@ -26,7 +26,7 @@ namespace WpfApp_3SemesterApp.Views
         {
             InitializeComponent();
 
-            DataContext = new ProductViewModel();
+            DataContext = new ProductViewModel(this);
         }
 
         private void txtPrice_PreviewTextInput(object sender, TextCompositionEventArgs e)

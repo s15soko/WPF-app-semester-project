@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using WpfApp_3SemesterApp.Commands;
 using WpfApp_3SemesterApp.Models;
 using WpfApp_3SemesterApp.Services;
+using WpfApp_3SemesterApp.Views;
 
 namespace WpfApp_3SemesterApp.ViewModels
 {
@@ -90,6 +91,8 @@ namespace WpfApp_3SemesterApp.ViewModels
             get => _saveCommand;
         }
 
+        public Page ViewPage;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         //
@@ -102,7 +105,7 @@ namespace WpfApp_3SemesterApp.ViewModels
             }
         }
 
-        public ProductViewModel()
+        public ProductViewModel(Page page = null)
         {
             ProductService = new ProductService();
             CategoryService = new CategoryService();
@@ -110,6 +113,7 @@ namespace WpfApp_3SemesterApp.ViewModels
             LoadData();
 
             _saveCommand = new GeneralCommand(Save);
+            ViewPage = page;
         }
 
         /// <summary>
@@ -144,7 +148,14 @@ namespace WpfApp_3SemesterApp.ViewModels
                 }
                 else
                 {
-                    Message = "Zapisano poprawnie";
+                    if (ViewPage != null)
+                    {
+                        ViewPage.NavigationService.Navigate(new ProductView());
+                    }
+                    else
+                    {
+                        Message = "Zapisano poprawnie";
+                    }
                 }
             }
             catch (Exception ex)

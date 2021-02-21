@@ -25,7 +25,7 @@ namespace WpfApp_3SemesterApp.Views
         {
             InitializeComponent();
 
-            DataContext = new CategoryViewModel();
+            DataContext = new CategoryViewModel(this);
         }
     }
 }

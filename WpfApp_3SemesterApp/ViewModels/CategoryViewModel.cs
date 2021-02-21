@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Controls;
 using WpfApp_3SemesterApp.Commands;
 using WpfApp_3SemesterApp.Models;
 using WpfApp_3SemesterApp.Services;
+using WpfApp_3SemesterApp.Views;
 
 namespace WpfApp_3SemesterApp.ViewModels
 {
@@ -46,6 +48,8 @@ namespace WpfApp_3SemesterApp.ViewModels
             get => _saveCommand;
         }
 
+        public Page ViewPage;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         //
@@ -58,13 +62,14 @@ namespace WpfApp_3SemesterApp.ViewModels
             }
         }
 
-        public CategoryViewModel()
+        public CategoryViewModel(Page page = null)
         {
             CategoryService = new CategoryService();
 
             LoadData();
 
             _saveCommand = new GeneralCommand(Save);
+            ViewPage = page;
         }
 
         //
@@ -97,7 +102,14 @@ namespace WpfApp_3SemesterApp.ViewModels
                 } 
                 else
                 {
-                    Message = "Zapisano poprawnie";
+                    if(ViewPage != null)
+                    {
+                        ViewPage.NavigationService.Navigate(new CategoryView());
+                    } 
+                    else
+                    {
+                        Message = "Zapisano poprawnie";
+                    }
                 }
             }
             catch (Exception ex)
