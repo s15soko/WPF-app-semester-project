@@ -32,12 +32,25 @@
                             Click="dashboard_ProductsBtn_Click"
                             BorderBrush="#FFE48A1F"
                             Background="#FFFB9F31">
-                        <TextBlock 
-                            Text="Produkty"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontSize="20" 
-                            Foreground="White"/>
+
+                        <StackPanel
+                            Orientation="Horizontal">
+
+                            <Image 
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Margin="0,0,10,0"
+                                Width="30"
+                                Source="pack://application:,,,/Resources/img/box.png"/>
+                            <TextBlock 
+                                Text="Produkty"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="20" 
+                                Foreground="White"/>
+                            
+                        </StackPanel>
+
+                        
                     </Button>
                 </Grid>
                 <Grid Grid.Row="1" Margin="5">
@@ -45,12 +58,26 @@
                             Click="dashboard_CategoriesBtn_Click"
                             BorderBrush="#FFE48A1F"
                             Background="#FFFB9F31">
-                        <TextBlock 
-                            Text="Kategorie"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontSize="20"
-                            Foreground="White"/>
+
+                        <StackPanel
+                            Orientation="Horizontal">
+
+                            <Image 
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Margin="0,0,10,0"
+                                Width="30"
+                                Source="pack://application:,,,/Resources/img/brochure-catalog.png"/>
+
+                            <TextBlock 
+                                Text="Kategorie"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Foreground="White"/>
+
+                        </StackPanel>
+
+                            
                     </Button>
                 </Grid>
             </Grid>
