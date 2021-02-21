@@ -1,5 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using WpfApp_3SemesterApp.Commands;
 using WpfApp_3SemesterApp.Models;
 using WpfApp_3SemesterApp.Services;
 
@@ -29,6 +34,42 @@ namespace WpfApp_3SemesterApp.ViewModels
             }
         }
 
+        private decimal _price;
+        public decimal Price
+        {
+            get => _price;
+            set
+            {
+                _price = value;
+                OnPropertyChanged(nameof(Price));
+            }
+        }
+
+        private ObservableCollection<Category> _categoriesList;
+        public ObservableCollection<Category> CategoriesList
+        {
+            get => _categoriesList;
+            set { _categoriesList = value; OnPropertyChanged(nameof(CategoriesList)); }
+        }
+
+        private Category _selectedCategory;
+        public Category SelectedCategory
+        {
+            get => _selectedCategory;
+            set
+            {
+                _selectedCategory = value;
+                OnPropertyChanged(nameof(SelectedCategory));
+            }
+        }
+
+        private string message;
+        public string Message
+        {
+            get { return message; }
+            set { message = value; OnPropertyChanged(nameof(Message)); }
+        }
+
         private ObservableCollection<Product> _products;
         public ObservableCollection<Product> ProductsList
         {
@@ -41,6 +82,13 @@ namespace WpfApp_3SemesterApp.ViewModels
         }
 
         private ProductService ProductService { get; }
+        private CategoryService CategoryService { get; }
+
+        private GeneralCommand _saveCommand;
+        public GeneralCommand SaveCommand
+        {
+            get => _saveCommand;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -57,8 +105,11 @@ namespace WpfApp_3SemesterApp.ViewModels
         public ProductViewModel()
         {
             ProductService = new ProductService();
+            CategoryService = new CategoryService();
 
             LoadData();
+
+            _saveCommand = new GeneralCommand(Save);
         }
 
         /// <summary>
@@ -67,6 +118,34 @@ namespace WpfApp_3SemesterApp.ViewModels
         public void LoadData()
         {
             ProductsList = new ObservableCollection<Product>(ProductService.GetAll());
+            CategoriesList = new ObservableCollection<Category>(CategoryService.GetAll());
+        }
+
+        public void Save()
+        {
+            try
+            {
+                var newEntity = new Product();
+                newEntity.Name = Name;
+                newEntity.Description = Description;
+                newEntity.Price = Price;
+                newEntity.CategoryId = SelectedCategory.Id;
+                newEntity.CreatedAt = DateTime.Now;
+
+                var IsSaved = ProductService.Create(newEntity);
+                if (IsSaved == null)
+                {
+                    Message = "Błąd w zapisie";
+                }
+                else
+                {
+                    Message = "Zapisano poprawnie";
+                }
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
         }
     }
 }

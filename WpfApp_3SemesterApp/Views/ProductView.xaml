@@ -26,11 +26,11 @@
                     FontSize="30"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"/>
-                <Button 
+                <Button x:Name="addNewProductBtn" 
                     Content="Dodaj nowy" 
                     Width="120"
                     FontSize="16"
-                    Margin="10"/>
+                    Margin="10" Click="addNewProductBtn_Click"/>
             </StackPanel>
         </Grid>
 
@@ -50,6 +50,14 @@
                         Width="*"
                         Header="Opis"
                         Binding="{Binding Path=Description}"/>
+                    <DataGridTextColumn 
+                        Width="*"
+                        Header="Cena"
+                        Binding="{Binding Path=Price}"/>
+                    <DataGridTextColumn 
+                        Width="*"
+                        Header="Kategoria"
+                        Binding="{Binding Path=CategoryId}"/>
                     <DataGridTextColumn 
                         Width="140"
                         Header="Dodany"
