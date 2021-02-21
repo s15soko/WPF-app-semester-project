@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp_3SemesterApp.Data;
+using WpfApp_3SemesterApp.Models;
+using WpfApp_3SemesterApp.Services;
+using WpfApp_3SemesterApp.ViewModels;
 
 namespace WpfApp_3SemesterApp.Views
 {
@@ -23,6 +27,8 @@ namespace WpfApp_3SemesterApp.Views
         public ProductView()
         {
             InitializeComponent();
+
+            DataContext = new ProductViewModel();
         }
     }
 }

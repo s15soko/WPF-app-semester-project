@@ -17,25 +17,20 @@ using WpfApp_3SemesterApp.ViewModels;
 namespace WpfApp_3SemesterApp.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy DashboardView.xaml
+    /// Logika interakcji dla klasy CategoryView.xaml
     /// </summary>
-    public partial class DashboardView : UserControl
+    public partial class CategoryView : UserControl
     {
-        public DashboardView()
+        public CategoryView()
         {
             InitializeComponent();
 
-            DataContext = new ProductViewModel();
-        }
-
-        private void dashboard_ProductsBtn_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new ProductViewModel();
-        }
-
-        private void dashboard_CategoriesBtn_Click(object sender, RoutedEventArgs e)
-        {
             DataContext = new CategoryViewModel();
+        }
+
+        private void addNewCategoryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
