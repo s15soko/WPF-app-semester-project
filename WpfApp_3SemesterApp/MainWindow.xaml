@@ -15,15 +15,6 @@
         WindowStyle="None" 
         FontFamily="Corbel">
 
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type viewmodels:ProductViewModel}">
-            <vw:ProductView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:CategoryViewModel}">
-            <vw:CategoryView/>
-        </DataTemplate>
-    </Window.Resources>
-
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -48,7 +39,7 @@
         </Grid>
 
         <Grid Grid.Column="0" Grid.Row="1">
-            <vw:DashboardView></vw:DashboardView>
+            <Frame x:Name="Main" NavigationUIVisibility="Hidden"></Frame>
         </Grid>
 
     </Grid>

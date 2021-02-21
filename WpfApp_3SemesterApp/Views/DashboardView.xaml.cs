@@ -19,23 +19,23 @@ namespace WpfApp_3SemesterApp.Views
     /// <summary>
     /// Logika interakcji dla klasy DashboardView.xaml
     /// </summary>
-    public partial class DashboardView : UserControl
+    public partial class DashboardView : Page
     {
         public DashboardView()
         {
             InitializeComponent();
 
-            DataContext = new ProductViewModel();
+            DashboardFrame.Content = new ProductView();
         }
 
         private void dashboard_ProductsBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new ProductViewModel();
+            DashboardFrame.Content = new ProductView();
         }
 
         private void dashboard_CategoriesBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new CategoryViewModel();
+            DashboardFrame.Content = new CategoryView();
         }
     }
 }

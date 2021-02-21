@@ -19,13 +19,11 @@ namespace WpfApp_3SemesterApp.Views
     /// <summary>
     /// Logika interakcji dla klasy CategoryView.xaml
     /// </summary>
-    public partial class CategoryView : UserControl
+    public partial class CategoryView : Page
     {
         public CategoryView()
         {
             InitializeComponent();
-
-            DataContext = new CategoryViewModel();
         }
 
         private void addNewCategoryBtn_Click(object sender, RoutedEventArgs e)

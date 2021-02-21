@@ -22,13 +22,11 @@ namespace WpfApp_3SemesterApp.Views
     /// <summary>
     /// Logika interakcji dla klasy ProductView.xaml
     /// </summary>
-    public partial class ProductView : UserControl
+    public partial class ProductView : Page
     {
         public ProductView()
         {
             InitializeComponent();
-
-            DataContext = new ProductViewModel();
         }
     }
 }

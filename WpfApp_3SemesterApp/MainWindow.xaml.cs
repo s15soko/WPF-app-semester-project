@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp_3SemesterApp.Views;
 
 namespace WpfApp_3SemesterApp
 {
@@ -23,6 +24,8 @@ namespace WpfApp_3SemesterApp
         public MainWindow()
         {
             InitializeComponent();
+
+            Main.Content = new DashboardView();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
