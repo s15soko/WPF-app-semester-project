@@ -66,6 +66,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\GeneralCommand.cs" />
+    <Compile Include="Migrations\202102211402029_AddFieldCategoryId.cs" />
+    <Compile Include="Migrations\202102211402029_AddFieldCategoryId.designer.cs">
+      <DependentUpon>202102211402029_AddFieldCategoryId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\IDbContextService.cs" />
@@ -77,6 +81,9 @@
     </Compile>
     <Compile Include="Views\CreateCategoryView.xaml.cs">
       <DependentUpon>CreateCategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateProductView.xaml.cs">
+      <DependentUpon>CreateProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
@@ -102,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreateCategoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,6 +150,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202102182033452_InitialAppMigration.resx">
       <DependentUpon>202102182033452_InitialAppMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102211402029_AddFieldCategoryId.resx">
+      <DependentUpon>202102211402029_AddFieldCategoryId.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
