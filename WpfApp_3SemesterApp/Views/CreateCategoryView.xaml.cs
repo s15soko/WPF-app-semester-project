@@ -17,20 +17,15 @@ using WpfApp_3SemesterApp.ViewModels;
 namespace WpfApp_3SemesterApp.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy CategoryView.xaml
+    /// Logika interakcji dla klasy CreateCategoryView.xaml
     /// </summary>
-    public partial class CategoryView : Page
+    public partial class CreateCategoryView : Page
     {
-        public CategoryView()
+        public CreateCategoryView()
         {
             InitializeComponent();
 
             DataContext = new CategoryViewModel();
-        }
-
-        private void addNewCategoryBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new CreateCategoryView());
         }
     }
 }

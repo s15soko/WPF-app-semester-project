@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using WpfApp_3SemesterApp.Commands;
 using WpfApp_3SemesterApp.Models;
 using WpfApp_3SemesterApp.Services;
 
@@ -18,6 +20,13 @@ namespace WpfApp_3SemesterApp.ViewModels
             }
         }
 
+        private string message;
+        public string Message
+        {
+            get { return message; }
+            set { message = value; OnPropertyChanged(nameof(Message)); }
+        }
+
         private ObservableCollection<Category> _categories;
         public ObservableCollection<Category> CategoriesList 
         {
@@ -30,6 +39,12 @@ namespace WpfApp_3SemesterApp.ViewModels
         }
 
         private CategoryService CategoryService { get; }
+
+        private GeneralCommand _saveCommand;
+        public GeneralCommand SaveCommand
+        {
+            get => _saveCommand;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -48,7 +63,11 @@ namespace WpfApp_3SemesterApp.ViewModels
             CategoryService = new CategoryService();
 
             LoadData();
+
+            _saveCommand = new GeneralCommand(Save);
         }
+
+        //
 
         /// <summary>
         /// Gets data and save it to list.
@@ -56,6 +75,30 @@ namespace WpfApp_3SemesterApp.ViewModels
         public void LoadData()
         {
             CategoriesList = new ObservableCollection<Category>(CategoryService.GetAll());
+        }
+
+        public void Save()
+        {
+            try
+            {
+                var newEntity = new Category();
+                newEntity.Name = Name;
+                newEntity.CreatedAt = DateTime.Now;
+
+                var IsSaved = CategoryService.Create(newEntity);
+                if (IsSaved == null)
+                {
+                    Message = "Błąd w zapisie";
+                } 
+                else
+                {
+                    Message = "Zapisano poprawnie";
+                }
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
         }
     }
 }
