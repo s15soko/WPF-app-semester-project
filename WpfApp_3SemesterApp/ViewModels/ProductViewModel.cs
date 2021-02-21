@@ -125,6 +125,11 @@ namespace WpfApp_3SemesterApp.ViewModels
         {
             try
             {
+                if(Name == null || Name.Length == 0)
+                {
+                    throw new Exception("Nazwa nie może być pusta");
+                }
+
                 var newEntity = new Product();
                 newEntity.Name = Name;
                 newEntity.Description = Description;

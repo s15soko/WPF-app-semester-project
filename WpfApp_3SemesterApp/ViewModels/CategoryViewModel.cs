@@ -81,6 +81,11 @@ namespace WpfApp_3SemesterApp.ViewModels
         {
             try
             {
+                if (Name == null || Name.Length == 0)
+                {
+                    throw new Exception("Nazwa nie może być pusta");
+                }
+
                 var newEntity = new Category();
                 newEntity.Name = Name;
                 newEntity.CreatedAt = DateTime.Now;
