@@ -5,12 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_3SemesterApp"
         xmlns:vw="clr-namespace:WpfApp_3SemesterApp.Views"
+        xmlns:viewmodels="clr-namespace:WpfApp_3SemesterApp.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="550" 
         Width="800" 
         ResizeMode="CanMinimize" 
-        Background="White">
+        Background="White" 
+        WindowStyle="None" 
+        FontFamily="Corbel">
 
-    <vw:DashboardView></vw:DashboardView>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:ProductViewModel}">
+            <vw:ProductView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:CategoryViewModel}">
+            <vw:CategoryView/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0" Background="#FF3C3C3C" 
+              MouseDown="Window_MouseDown">
+            
+            <Button x:Name="CloseWindowBtn" 
+                Content="Zamknij" 
+                Background="Transparent"
+                BorderBrush="Transparent"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 10, 0"
+                Foreground="White" Click="Button_Click"/>
+        </Grid>
+
+        <Grid Grid.Column="0" Grid.Row="1">
+            <vw:DashboardView></vw:DashboardView>
+        </Grid>
+
+    </Grid>
 </Window>
