@@ -117,7 +117,7 @@ namespace WpfApp_3SemesterApp.ViewModels
         /// </summary>
         public void LoadData()
         {
-            ProductsList = new ObservableCollection<Product>(ProductService.GetAll());
+            ProductsList = new ObservableCollection<Product>(ProductService.GetAllFull());
             CategoriesList = new ObservableCollection<Category>(CategoryService.GetAll());
         }
 

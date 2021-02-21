@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WpfApp_3SemesterApp.Data;
@@ -55,6 +56,30 @@ namespace WpfApp_3SemesterApp.Services
             }
 
             return true;
+        }
+
+        //
+
+        public List<Product> GetAllFull()
+        {
+            var db = new ShopDbContext();
+            var query = from product in db.Products
+                         from category in db.Categories.Where(category => category.Id == product.CategoryId).DefaultIfEmpty() 
+                         select new
+                         {
+                             Product = product,
+                             Category = category
+                         };
+
+            List<Product> list = new List<Product>();
+
+            foreach(var r in query)
+            {
+                r.Product.Category = r.Category;
+                list.Add(r.Product);
+            }
+
+            return list;
         }
     }
 }

@@ -57,7 +57,7 @@
                     <DataGridTextColumn 
                         Width="*"
                         Header="Kategoria"
-                        Binding="{Binding Path=CategoryId}"/>
+                        Binding="{Binding Path=Category.Name}"/>
                     <DataGridTextColumn 
                         Width="140"
                         Header="Dodany"
