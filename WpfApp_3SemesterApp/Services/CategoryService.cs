@@ -37,6 +37,7 @@ namespace WpfApp_3SemesterApp.Services
             {
                 var db = new ShopDbContext();
                 var updatedEntity = db.Categories.Add(entity);
+                db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return updatedEntity;
             }

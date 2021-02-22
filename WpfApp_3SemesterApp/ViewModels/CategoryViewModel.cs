@@ -11,14 +11,14 @@ namespace WpfApp_3SemesterApp.ViewModels
 {
     public class CategoryViewModel : INotifyPropertyChanged
     {
-        private string _name;
-        public string Name 
+        private Category _category;
+        public Category Category
         {
-            get => _name;
+            get => _category;
             set
             {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
+                _category = value;
+                OnPropertyChanged(nameof(Category));
             }
         }
 
@@ -48,6 +48,18 @@ namespace WpfApp_3SemesterApp.ViewModels
             get => _saveCommand;
         }
 
+        private GeneralCommand _updateCommand;
+        public GeneralCommand UpdateCommand
+        {
+            get => _updateCommand;
+        }
+
+        private GeneralCommand _deleteCommand;
+        public GeneralCommand DeleteCommand
+        {
+            get => _deleteCommand;
+        }
+
         public Page ViewPage;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -65,10 +77,13 @@ namespace WpfApp_3SemesterApp.ViewModels
         public CategoryViewModel(Page page = null)
         {
             CategoryService = new CategoryService();
+            Category = new Category();
 
             LoadData();
 
             _saveCommand = new GeneralCommand(Save);
+            _updateCommand = new GeneralCommand(Update);
+            _deleteCommand = new GeneralCommand(Delete);
             ViewPage = page;
         }
 
@@ -86,18 +101,18 @@ namespace WpfApp_3SemesterApp.ViewModels
         {
             try
             {
-                if (Name == null || Name.Length == 0)
+                if (Category.Name == null || Category.Name.Length == 0)
                 {
                     throw new Exception("Nazwa nie może być pusta");
                 }
 
-                if (CategoryService.NameExists(Name))
+                if (CategoryService.NameExists(Category.Name))
                 {
                     throw new Exception("Ta nazwa jest już zajęta");
                 }
 
                 var newEntity = new Category();
-                newEntity.Name = Name;
+                newEntity.Name = Category.Name;
                 newEntity.CreatedAt = DateTime.Now;
 
                 var IsSaved = CategoryService.Create(newEntity);
@@ -116,6 +131,45 @@ namespace WpfApp_3SemesterApp.ViewModels
                         Message = "Zapisano poprawnie";
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
+        }
+
+        public void Update()
+        {
+            try
+            {
+                var entity = CategoryService.Update(Category);
+                if(entity == null)
+                {
+                    Message = "Błąd podczas aktualizacji";
+                }
+                else
+                {
+                    if (ViewPage != null)
+                    {
+                        ViewPage.NavigationService.Navigate(new CategoryView());
+                    }
+                    else
+                    {
+                        Message = "Zaktualizowano poprawnie";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
+        }
+
+        public void Delete()
+        {
+            try
+            {
+                Message = "TODO Delete";
             }
             catch (Exception ex)
             {
