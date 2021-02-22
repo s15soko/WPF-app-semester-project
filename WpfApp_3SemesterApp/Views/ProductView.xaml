@@ -44,7 +44,7 @@
 
                 <DataGrid.Columns>
                     <DataGridTextColumn 
-                        Width="200"    
+                        Width="110"    
                         Header="Nazwa"
                         Binding="{Binding Path=Name}"/>
                     <DataGridTextColumn 
@@ -52,11 +52,11 @@
                         Header="Opis"
                         Binding="{Binding Path=Description}"/>
                     <DataGridTextColumn 
-                        Width="*"
+                        Width="80"
                         Header="Cena"
                         Binding="{Binding Path=Price}"/>
                     <DataGridTextColumn 
-                        Width="*"
+                        Width="85"
                         Header="Kategoria"
                         Binding="{Binding Path=Category.Name}"/>
                     <DataGridTextColumn 

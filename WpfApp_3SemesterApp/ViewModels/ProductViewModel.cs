@@ -160,6 +160,8 @@ namespace WpfApp_3SemesterApp.ViewModels
             {
                 IsValid();
 
+                Product.CategoryId = SelectedCategory.Id;
+
                 var entity = ProductService.Update(Product);
                 if (entity == null)
                 {

@@ -44,11 +44,11 @@
 
                 <DataGrid.Columns>
                     <DataGridTextColumn 
-                        Width="200"    
+                        Width="*"    
                         Header="Nazwa"
                         Binding="{Binding Path=Name}"/>
                     <DataGridTextColumn 
-                        Width="*"
+                        Width="140"
                         Header="Dodany"
                         Binding="{Binding Path=CreatedAt}"/>
                 </DataGrid.Columns>

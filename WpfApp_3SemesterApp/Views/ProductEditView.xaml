@@ -100,8 +100,8 @@
                             FontSize="20"
                             VerticalAlignment="Center"/>
                         <ComboBox
-                            SelectedItem="{Binding SelectedCategory}"
-                            ItemsSource="{Binding Path=CategoriesList, Mode=OneWay}"
+                            SelectedItem="{Binding Path=SelectedCategory, Mode=TwoWay}"
+                            ItemsSource="{Binding Path=CategoriesList, Mode=TwoWay}"
                             VerticalAlignment="Center"
                             DisplayMemberPath="Name"
                             SelectedValuePath="Id"
