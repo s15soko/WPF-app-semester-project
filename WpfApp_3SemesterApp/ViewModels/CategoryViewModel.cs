@@ -183,7 +183,8 @@ namespace WpfApp_3SemesterApp.ViewModels
                 throw new Exception("Nazwa nie może być pusta");
             }
 
-            if (CategoryService.NameExists(Category.Name))
+            var entity = CategoryService.NameExists(Category.Name);
+            if (entity != null && entity.Id != Category.Id)
             {
                 throw new Exception("Ta nazwa jest już zajęta");
             }

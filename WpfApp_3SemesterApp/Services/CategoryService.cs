@@ -62,11 +62,11 @@ namespace WpfApp_3SemesterApp.Services
         /// Check if entity with this name exists.
         /// </summary>
         /// <param name="name">Entity name.</param>
-        /// <returns>Whether entity exists.</returns>
-        public bool NameExists(string name)
+        /// <returns>Entity.</returns>
+        public Category NameExists(string name)
         {
             var db = new ShopDbContext();
-            return db.Categories.Where(e => e.Name == name).FirstOrDefault() != null;
+            return db.Categories.Where(e => e.Name == name).FirstOrDefault();
         }
     }
 }
