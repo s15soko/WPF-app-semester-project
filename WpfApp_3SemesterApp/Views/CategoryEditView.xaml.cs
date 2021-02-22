@@ -22,6 +22,10 @@ namespace WpfApp_3SemesterApp.Views
     /// </summary>
     public partial class CategoryEditView : Page
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categoryId">Id of category to edit.</param>
         public CategoryEditView(int categoryId)
         {
             InitializeComponent();

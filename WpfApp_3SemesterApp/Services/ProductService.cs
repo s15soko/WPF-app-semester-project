@@ -62,6 +62,10 @@ namespace WpfApp_3SemesterApp.Services
 
         //
 
+        /// <summary>
+        /// Gets all products together with categories.
+        /// </summary>
+        /// <returns>List of objects.</returns>
         public List<Product> GetAllFull()
         {
             var db = new ShopDbContext();

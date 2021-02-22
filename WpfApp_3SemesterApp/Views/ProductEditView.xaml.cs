@@ -23,6 +23,10 @@ namespace WpfApp_3SemesterApp.Views
     /// </summary>
     public partial class ProductEditView : Page
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId">Id of product to edit.</param>
         public ProductEditView(int productId)
         {
             InitializeComponent();

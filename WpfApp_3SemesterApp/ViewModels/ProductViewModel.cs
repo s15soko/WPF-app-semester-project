@@ -95,6 +95,7 @@ namespace WpfApp_3SemesterApp.ViewModels
             }
         }
 
+        /// <param name="page">Page object - if we want to redirect to another view, ex. after save action.</param>
         public ProductViewModel(Page page = null)
         {
             ProductService = new ProductService();
@@ -118,6 +119,9 @@ namespace WpfApp_3SemesterApp.ViewModels
             CategoriesList = new ObservableCollection<Category>(CategoryService.GetAll());
         }
 
+        /// <summary>
+        /// Save new entity.
+        /// </summary>
         public void Save()
         {
             try
@@ -154,6 +158,9 @@ namespace WpfApp_3SemesterApp.ViewModels
             }
         }
 
+        /// <summary>
+        /// Update entity.
+        /// </summary>
         public void Update()
         {
             try
@@ -185,6 +192,9 @@ namespace WpfApp_3SemesterApp.ViewModels
             }
         }
 
+        /// <summary>
+        /// Delete entity.
+        /// </summary>
         public void Delete()
         {
             try
