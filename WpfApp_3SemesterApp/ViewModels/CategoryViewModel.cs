@@ -101,15 +101,7 @@ namespace WpfApp_3SemesterApp.ViewModels
         {
             try
             {
-                if (Category.Name == null || Category.Name.Length == 0)
-                {
-                    throw new Exception("Nazwa nie może być pusta");
-                }
-
-                if (CategoryService.NameExists(Category.Name))
-                {
-                    throw new Exception("Ta nazwa jest już zajęta");
-                }
+                IsValid();
 
                 var newEntity = new Category();
                 newEntity.Name = Category.Name;
@@ -142,6 +134,8 @@ namespace WpfApp_3SemesterApp.ViewModels
         {
             try
             {
+                IsValid();
+
                 var entity = CategoryService.Update(Category);
                 if(entity == null)
                 {
@@ -175,6 +169,26 @@ namespace WpfApp_3SemesterApp.ViewModels
             {
                 Message = ex.Message;
             }
+        }
+
+        /// <summary>
+        /// Check if category data is valid.
+        /// </summary>
+        /// <exception cref="Exception">Whether some data is not valid.</exception>
+        /// <returns>Whether data is valid.</returns>
+        public bool IsValid()
+        {
+            if (Category.Name == null || Category.Name.Length == 0)
+            {
+                throw new Exception("Nazwa nie może być pusta");
+            }
+
+            if (CategoryService.NameExists(Category.Name))
+            {
+                throw new Exception("Ta nazwa jest już zajęta");
+            }
+
+            return true;
         }
     }
 }
