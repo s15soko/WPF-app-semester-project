@@ -13,36 +13,14 @@ namespace WpfApp_3SemesterApp.ViewModels
 {
     public class ProductViewModel : INotifyPropertyChanged
     {
-        private string _name;
-        public string Name
+        private Product _product;
+        public Product Product
         {
-            get => _name;
+            get => _product;
             set
             {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
-            }
-        }
-
-        private string _description;
-        public string Description
-        {
-            get => _description;
-            set
-            {
-                _description = value;
-                OnPropertyChanged(nameof(Description));
-            }
-        }
-
-        private decimal _price;
-        public decimal Price
-        {
-            get => _price;
-            set
-            {
-                _price = value;
-                OnPropertyChanged(nameof(Price));
+                _product = value;
+                OnPropertyChanged(nameof(Product));
             }
         }
 
@@ -91,6 +69,18 @@ namespace WpfApp_3SemesterApp.ViewModels
             get => _saveCommand;
         }
 
+        private GeneralCommand _updateCommand;
+        public GeneralCommand UpdateCommand
+        {
+            get => _updateCommand;
+        }
+
+        private GeneralCommand _deleteCommand;
+        public GeneralCommand DeleteCommand
+        {
+            get => _deleteCommand;
+        }
+
         public Page ViewPage;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -109,10 +99,13 @@ namespace WpfApp_3SemesterApp.ViewModels
         {
             ProductService = new ProductService();
             CategoryService = new CategoryService();
+            Product = new Product();
 
             LoadData();
 
             _saveCommand = new GeneralCommand(Save);
+            _updateCommand = new GeneralCommand(Update);
+            _deleteCommand = new GeneralCommand(Delete);
             ViewPage = page;
         }
 
@@ -129,20 +122,12 @@ namespace WpfApp_3SemesterApp.ViewModels
         {
             try
             {
-                if(Name == null || Name.Length == 0)
-                {
-                    throw new Exception("Nazwa nie może być pusta");
-                }
-
-                if(SelectedCategory == null)
-                {
-                    throw new Exception("Kategoria nie może być pusta");
-                }
+                IsValid();
 
                 var newEntity = new Product();
-                newEntity.Name = Name;
-                newEntity.Description = Description;
-                newEntity.Price = Price;
+                newEntity.Name = Product.Name;
+                newEntity.Description = Product.Description;
+                newEntity.Price = Product.Price;
                 newEntity.CategoryId = SelectedCategory.Id;
                 newEntity.CreatedAt = DateTime.Now;
 
@@ -167,6 +152,83 @@ namespace WpfApp_3SemesterApp.ViewModels
             {
                 Message = ex.Message;
             }
+        }
+
+        public void Update()
+        {
+            try
+            {
+                IsValid();
+
+                var entity = ProductService.Update(Product);
+                if (entity == null)
+                {
+                    Message = "Błąd podczas aktualizacji";
+                }
+                else
+                {
+                    if (ViewPage != null)
+                    {
+                        ViewPage.NavigationService.Navigate(new ProductView());
+                    }
+                    else
+                    {
+                        Message = "Zaktualizowano poprawnie";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
+        }
+
+        public void Delete()
+        {
+            try
+            {
+                var deleted = ProductService.Delete(Product.Id);
+                if (deleted)
+                {
+                    if (ViewPage != null)
+                    {
+                        ViewPage.NavigationService.Navigate(new ProductView());
+                    }
+                    else
+                    {
+                        Message = "Usunięto poprawnie";
+                    }
+
+                }
+                else
+                {
+                    Message = "Błąd podczas usuwania";
+                }
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
+        }
+
+        /// <summary>
+        /// Check if product data is valid.
+        /// </summary>
+        /// <exception cref="Exception">Whether some data is not valid.</exception>
+        /// <returns>Whether data is valid.</returns>
+        public bool IsValid()
+        {
+            if (Product.Name == null || Product.Name.Length == 0)
+            {
+                throw new Exception("Nazwa nie może być pusta");
+            }
+
+            if (SelectedCategory == null)
+            {
+                throw new Exception("Kategoria nie może być pusta");
+            }
+
+            return true;
         }
     }
 }

@@ -35,5 +35,23 @@ namespace WpfApp_3SemesterApp.Views
         {
             NavigationService.Navigate(new CreateProductView());
         }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (sender != null)
+            {
+                DataGrid dataGrid = sender as DataGrid;
+                if (dataGrid != null && dataGrid.SelectedItem != null && dataGrid.SelectedItems.Count > 0)
+                {
+                    DataGridRow dgRow = dataGrid.ItemContainerGenerator.ContainerFromItem(dataGrid.SelectedItem) as DataGridRow;
+                    var product = dgRow.Item as Product;
+
+                    if (product != null)
+                    {
+                        NavigationService.Navigate(new ProductEditView(product.Id));
+                    }
+                }
+            }
+        }
     }
 }

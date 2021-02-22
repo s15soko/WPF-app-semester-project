@@ -38,6 +38,7 @@ namespace WpfApp_3SemesterApp.Services
             {
                 var db = new ShopDbContext();
                 var updatedEntity = db.Products.Add(entity);
+                db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return updatedEntity;
             }
@@ -51,7 +52,8 @@ namespace WpfApp_3SemesterApp.Services
             if (e != null)
             {
                 var db = new ShopDbContext();
-                db.Products.Remove(e);
+                db.Products.Attach(e);
+                db.Entry(e).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
             }
 

@@ -39,6 +39,7 @@
                 IsReadOnly="True"
                 CanUserAddRows="False"
                 AutoGenerateColumns="False"
+                MouseDoubleClick="DataGrid_MouseDoubleClick"
                 ItemsSource="{Binding Path=ProductsList, Mode=TwoWay}">
 
                 <DataGrid.Columns>
