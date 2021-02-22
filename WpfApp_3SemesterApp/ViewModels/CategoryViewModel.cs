@@ -163,7 +163,26 @@ namespace WpfApp_3SemesterApp.ViewModels
         {
             try
             {
-                Message = "TODO Delete";
+                if (CategoryService.CategoryIsAttachedToProduct(Category.Id))
+                    throw new Exception("Kategoria jest już przypisana do produktu");
+
+                var deleted = CategoryService.Delete(Category.Id);
+                if(deleted)
+                {
+                    if (ViewPage != null)
+                    {
+                        ViewPage.NavigationService.Navigate(new CategoryView());
+                    }
+                    else
+                    {
+                        Message = "Usunięto poprawnie";
+                    }
+                    
+                }
+                else
+                {
+                    Message = "Błąd podczas usuwania";
+                }
             }
             catch (Exception ex)
             {

@@ -51,7 +51,8 @@ namespace WpfApp_3SemesterApp.Services
             if (e != null)
             {
                 var db = new ShopDbContext();
-                db.Categories.Remove(e);
+                db.Categories.Attach(e);
+                db.Entry(e).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
             }
 
@@ -67,6 +68,17 @@ namespace WpfApp_3SemesterApp.Services
         {
             var db = new ShopDbContext();
             return db.Categories.Where(e => e.Name == name).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Check if category is already used.
+        /// </summary>
+        /// <param name="categoryId">Category id.</param>
+        /// <returns>Whether category is attached to some product.</returns>
+        public bool CategoryIsAttachedToProduct(int categoryId)
+        {
+            var db = new ShopDbContext();
+            return db.Products.Where(p => p.CategoryId == categoryId).FirstOrDefault() != null;
         }
     }
 }
