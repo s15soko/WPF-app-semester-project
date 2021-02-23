@@ -16,6 +16,7 @@
         
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -36,6 +37,21 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                Text="Wszystkich kategorii: "
+                FontSize="12"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
+                <TextBlock 
+                Text="{Binding Count}"
+                FontSize="12"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="0">
             <DataGrid 
                 IsReadOnly="True"
                 CanUserAddRows="False"

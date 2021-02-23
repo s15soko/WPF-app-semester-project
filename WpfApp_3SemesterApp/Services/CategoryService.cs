@@ -80,5 +80,15 @@ namespace WpfApp_3SemesterApp.Services
             var db = new ShopDbContext();
             return db.Products.Where(p => p.CategoryId == categoryId).FirstOrDefault() != null;
         }
+
+        /// <summary>
+        /// Count categories.
+        /// </summary>
+        /// <returns>Number of categories.</returns>
+        public int Count()
+        {
+            var db = new ShopDbContext();
+            return db.Categories.Count();
+        }
     }
 }

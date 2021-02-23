@@ -22,6 +22,17 @@ namespace WpfApp_3SemesterApp.ViewModels
             }
         }
 
+        private int _count;
+        public int Count
+        {
+            get => _count;
+            set
+            {
+                _count = value;
+                OnPropertyChanged(nameof(Count));
+            }
+        }
+
         private string message;
         public string Message
         {
@@ -96,6 +107,7 @@ namespace WpfApp_3SemesterApp.ViewModels
         public void LoadData()
         {
             CategoriesList = new ObservableCollection<Category>(CategoryService.GetAll());
+            Count = CategoryService.Count();
         }
 
         /// <summary>
