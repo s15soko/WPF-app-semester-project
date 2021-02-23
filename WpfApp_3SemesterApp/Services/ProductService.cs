@@ -87,5 +87,15 @@ namespace WpfApp_3SemesterApp.Services
 
             return list;
         }
+
+        /// <summary>
+        /// Count products.
+        /// </summary>
+        /// <returns>Number of products.</returns>
+        public int Count()
+        {
+            var db = new ShopDbContext();
+            return db.Products.Count();
+        }
     }
 }

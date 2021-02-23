@@ -24,6 +24,17 @@ namespace WpfApp_3SemesterApp.ViewModels
             }
         }
 
+        private int _count;
+        public int Count
+        {
+            get => _count;
+            set
+            {
+                _count = value;
+                OnPropertyChanged(nameof(Count));
+            }
+        }
+
         private ObservableCollection<Category> _categoriesList;
         public ObservableCollection<Category> CategoriesList
         {
@@ -117,6 +128,7 @@ namespace WpfApp_3SemesterApp.ViewModels
         {
             ProductsList = new ObservableCollection<Product>(ProductService.GetAllFull());
             CategoriesList = new ObservableCollection<Category>(CategoryService.GetAll());
+            Count = ProductService.Count();
         }
 
         /// <summary>
