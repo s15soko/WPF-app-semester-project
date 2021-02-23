@@ -30,7 +30,8 @@
                     Content="Dodaj nowy" 
                     Width="120"
                     FontSize="16"
-                    Margin="10" Click="addNewProductBtn_Click"/>
+                    Style="{DynamicResource ActionButton}"
+                    Margin="12" Click="addNewProductBtn_Click"/>
             </StackPanel>
         </Grid>
 

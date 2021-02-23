@@ -115,11 +115,13 @@
                         <Button
                             Command="{Binding Path=UpdateCommand}"
                             Content="Zapisz"
+                            Style="{DynamicResource ActionButton}"
                             FontSize="20"/>
                         <Button
                             Margin="10,0,0,0"
                             Command="{Binding Path=DeleteCommand}"
                             Content="Usuń"
+                            Style="{DynamicResource ActionButton}"
                             FontSize="20"/>
                     </StackPanel>
                 </Grid>

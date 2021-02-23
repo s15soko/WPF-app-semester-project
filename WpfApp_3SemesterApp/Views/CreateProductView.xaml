@@ -115,6 +115,7 @@
                         <Button
                             Command="{Binding Path=SaveCommand}"
                             Content="Zapisz"
+                            Style="{DynamicResource ActionButton}"
                             FontSize="20"/>
                     </StackPanel>
                 </Grid>

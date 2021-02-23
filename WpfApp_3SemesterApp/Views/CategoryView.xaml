@@ -30,7 +30,8 @@
                     Content="Dodaj nową" 
                     Width="120"
                     FontSize="16"
-                    Margin="10" Click="addNewCategoryBtn_Click"/>
+                    Style="{DynamicResource ActionButton}"
+                    Margin="12" Click="addNewCategoryBtn_Click"/>
             </StackPanel>
         </Grid>
 
