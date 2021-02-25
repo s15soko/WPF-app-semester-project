@@ -13,6 +13,7 @@
         ResizeMode="CanMinimize" 
         Background="White" 
         WindowStyle="None" 
+        Icon="/Resources/img/Icon.png"
         FontFamily="Corbel">
 
     <Grid>
