@@ -12,6 +12,10 @@ namespace WpfApp_3SemesterApp.ViewModels
     public class CategoryViewModel : INotifyPropertyChanged
     {
         private Category _category;
+
+        /// <summary>
+        /// Contains category data displayed in view.
+        /// </summary>
         public Category Category
         {
             get => _category;
@@ -23,6 +27,10 @@ namespace WpfApp_3SemesterApp.ViewModels
         }
 
         private int _count;
+
+        /// <summary>
+        /// Contains number of all categories.
+        /// </summary>
         public int Count
         {
             get => _count;
@@ -34,6 +42,10 @@ namespace WpfApp_3SemesterApp.ViewModels
         }
 
         private string message;
+
+        /// <summary>
+        /// Message to show after some action.
+        /// </summary>
         public string Message
         {
             get { return message; }
@@ -71,6 +83,9 @@ namespace WpfApp_3SemesterApp.ViewModels
             get => _deleteCommand;
         }
 
+        /// <summary>
+        /// Contains page object required to redirects.
+        /// </summary>
         public Page ViewPage;
 
         public event PropertyChangedEventHandler PropertyChanged;

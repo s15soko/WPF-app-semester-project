@@ -23,7 +23,7 @@ namespace WpfApp_3SemesterApp.Services
         /// <summary>
         /// Gets entity by id.
         /// </summary>
-        /// <param name="id">If of entity to get.</param>
+        /// <param name="id">Id of entity to get.</param>
         /// <returns>Found entity.</returns>
         T Read(int id);
 
@@ -37,7 +37,7 @@ namespace WpfApp_3SemesterApp.Services
         /// <summary>
         /// Delete entity.
         /// </summary>
-        /// <param name="id">If of entity to delete.</param>
+        /// <param name="id">Id of entity to delete.</param>
         /// <returns>Whether action was successful.</returns>
         bool Delete(int id);
     }
